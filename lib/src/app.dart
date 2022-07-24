@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'kurdish_names/kurdish_names_list.dart';
 import 'settings/settings_controller.dart';
@@ -15,6 +16,8 @@ class MyApp extends StatelessWidget {
 
   final SettingsController settingsController;
 
+
+
   @override
   Widget build(BuildContext context) {
     // Glue the SettingsController to the MaterialApp.
@@ -25,6 +28,7 @@ class MyApp extends StatelessWidget {
       animation: settingsController,
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
+          
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the
@@ -51,11 +55,12 @@ class MyApp extends StatelessWidget {
           // directory.
           onGenerateTitle: (BuildContext context) =>
               AppLocalizations.of(context)!.appTitle,
-
           // Define a light and dark color theme. Then, read the user's
           // preferred ThemeMode (light, dark, or system default) from the
           // SettingsController to display the correct theme.
-          theme: ThemeData(),
+          theme: ThemeData(
+            fontFamily: GoogleFonts.notoSansArabic().fontFamily
+          ),
           darkTheme: ThemeData.dark(),
           themeMode: settingsController.themeMode,
 
